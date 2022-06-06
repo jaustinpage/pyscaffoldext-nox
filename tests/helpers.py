@@ -62,7 +62,7 @@ def run(*args, **kwargs):
         else:
             args = args[0]
 
-    if args[0] in ("python", "putup", "pip", "tox", "pytest", "pre-commit"):
+    if args[0] in ("python", "putup", "pip", "tox", "nox", "pytest", "pre-commit"):
         raise SystemError("Please specify an executable with explicit path")
 
     opts = dict(stderr=STDOUT, universal_newlines=True)
@@ -81,19 +81,19 @@ def run(*args, **kwargs):
 
 
 def run_common_tasks(tests=True, docs=True, pre_commit=True, install=True):
-    # Requires tox, setuptools_scm and pre-commit in setup.cfg ::
+    # Requires nox, setuptools_scm and pre-commit in setup.cfg ::
     # opts.extras_require.testing
     if tests:
-        run(f"{PYTHON} -m tox")
+        run(f"{PYTHON} -m nox")
 
-    run(f"{PYTHON} -m tox -e build")
+    run(f"{PYTHON} -m nox --session build")
     wheels = list(Path("dist").glob("*.whl"))
     assert wheels
 
     run(f"{PYTHON} setup.py --version")
 
     if docs:
-        run(f"{PYTHON} -m tox -e docs,doctests")
+        run(f"{PYTHON} -m nox --session docs --session doctests")
 
     if pre_commit:
         try:

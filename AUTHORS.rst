@@ -2,4 +2,4 @@
 Contributors
 ============
 
-* Austin Page <austin.page@ericsson.com>
+* Austin Page <jaustinpage@gmail.com>
