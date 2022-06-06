@@ -3,13 +3,13 @@ pyscaffoldext-nox
 =================
 
 
-Add a short description here!
+Nox for pyscaffold.
 
 
 Usage
 =====
 
-Just install this package with ``pip install ${project}`` and note that ``putup -h`` shows a new option ``--nox``. Use this flag to ...
+Just install this package with ``pip install ${project}`` and note that ``putup -h`` shows a new option ``--nox``. Use this flag to use nox for your next project.
 
 
 .. _pyscaffold-notes:
