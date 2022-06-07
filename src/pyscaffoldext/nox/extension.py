@@ -1,12 +1,11 @@
 """Nox for pyscaffold."""
-from functools import reduce
 from typing import List
 
 from configupdater import ConfigUpdater
 from pyscaffold.actions import Action, ActionParams, ScaffoldOpts, Structure
 from pyscaffold.extensions import Extension
 from pyscaffold.operations import no_overwrite
-from pyscaffold.structure import merge, reify_leaf, reject
+from pyscaffold.structure import merge, reify_leaf
 
 from pyscaffoldext.nox.templates import template
 
@@ -73,12 +72,5 @@ def replace_files(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
     # do setup.cfg modifications
     setup_content, setup_file_op = reify_leaf(struct["setup.cfg"], opts)
     struct["setup.cfg"] = (configure_setup_cfg(setup_content, opts), setup_file_op)
-
-    # remove files for replacement
-    replacement_files = [
-        "tox.ini",
-    ]
-
-    struct = reduce(reject, replacement_files, struct)
 
     return struct, opts
