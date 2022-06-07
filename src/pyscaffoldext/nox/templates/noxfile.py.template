@@ -155,7 +155,7 @@ def build(session: nox.Session) -> None:
 @nox.session
 @nox.parametrize("repository", ["testpypi", "pypi"], ["publish-testpypi", "publish"])
 def publish(session: nox.Session, repository: str) -> None:
-    session.install(["twine"])
+    session.install("twine")
     session.run("python3", "-m", "twine", "check", "dist/*")
     session.run(
         "python3", "-m", "twine", "upload", "--repository", repository, "dist/*"
