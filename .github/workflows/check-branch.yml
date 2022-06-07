@@ -28,4 +28,4 @@ jobs:
         git config --global user.email "john.doe@example.com"
         git config --global user.name "John Doe"
         python -m pip install --upgrade pip setuptools nox
-        python -m nox --session default --session lint --session clean --session build --session docs --session doctests --session linkcheck
+        python -m nox --session default lint clean build docs doctests linkcheck
