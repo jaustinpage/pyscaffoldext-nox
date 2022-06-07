@@ -125,7 +125,7 @@ def linkcheck(session: nox.Session) -> None:
     [
         nox.param("html", id="build"),
         nox.param("doctest", id="test"),
-        nox.param("linkcheck"),
+        nox.param("linkcheck", id="linkcheck"),
     ],
 )
 def doc(session: nox.Session, command: str) -> None:
