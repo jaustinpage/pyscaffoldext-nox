@@ -75,7 +75,7 @@ def parse_option(
     session: nox.Session, argname: str, default: Optional[str] = None
 ) -> Tuple[str, List[str]]:
     """Parse a single option from the nox session positional arguments."""
-    parser = argparse.ArgumentParser(exit_on_error=False)
+    parser = argparse.ArgumentParser()
     parser.add_argument(argname, default=default, dest="value")
     args, remaining = parser.parse_known_args(session.posargs)
     return args.value, remaining
