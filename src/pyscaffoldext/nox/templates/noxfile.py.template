@@ -164,7 +164,7 @@ def build(session: nox.Session) -> None:
 
 
 @nox.session
-def publish(session: nox.Session, repository: str) -> None:
+def publish(session: nox.Session) -> None:
     repository, _ = parse_option(session, "--repository", "pypi")
 
     session.install("twine")
