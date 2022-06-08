@@ -1,7 +1,8 @@
+import argparse
 import logging
 from configparser import ConfigParser
 from shutil import rmtree
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
 import nox
 
@@ -68,6 +69,16 @@ def install_package(
         packages.insert(0, "-e")
 
     return packages
+
+
+def parse_option(
+    session: nox.Session, argname: str, default: Optional[str] = None
+) -> Tuple[str, List[str]]:
+    """Parse a single option from the nox session positional arguments."""
+    parser = argparse.ArgumentParser(exit_on_error=False)
+    parser.add_argument(argname, default=default, dest="value")
+    args, remaining = parser.parse_known_args(session.posargs)
+    return args.value, remaining
 
 
 @nox.session(python=False)
@@ -153,8 +164,9 @@ def build(session: nox.Session) -> None:
 
 
 @nox.session
-@nox.parametrize("repository", ["testpypi", "pypi"], ["publish-testpypi", "publish"])
 def publish(session: nox.Session, repository: str) -> None:
+    repository, _ = parse_option(session, "--repository", "pypi")
+
     session.install("twine")
     session.run("python3", "-m", "twine", "check", "dist/*")
     session.run(
