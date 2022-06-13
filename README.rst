@@ -11,7 +11,7 @@ Usage
 
 Just install this package with ``pip install ${project}`` and note that ``putup -h`` shows a new option ``--nox``. Use this flag to use nox for your next project.
 
-This project was inspired by `SarthakJariwala's pyscaffold nox extension <https://github.com/SarthakJariwala/pyscaffoldext-nox>` and their efforts to create a pyscaffoldext-nox plugin. See more discussion `here <https://github.com/jaustinpage/pyscaffoldext-nox/issues/11>`
+This project was inspired by `SarthakJariwala's pyscaffold nox extension <https://github.com/SarthakJariwala/pyscaffoldext-nox>`_ and their efforts to create a pyscaffoldext-nox plugin. See more info `here <https://github.com/jaustinpage/pyscaffoldext-nox/issues/11>`_
 
 .. _pyscaffold-notes:
 
